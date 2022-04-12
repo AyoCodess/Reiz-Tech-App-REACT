@@ -6,9 +6,9 @@ function SortBtn({
   sortHandler,
   filterHandler,
   selectedCountry,
-  sortRegionHandler,
   resetDataHandler,
   resultData,
+  sortByOceaniaRegion,
 }) {
   return (
     <div className='flex flex-col mb-2 mt-4'>
@@ -22,13 +22,14 @@ function SortBtn({
             {!isAscending && 'Ascending'}
             {isAscending && 'Descending'}
           </button>
-        </div>
+        </div>{' '}
         <div className='flex items-center'>
           <button
-            onClick={sortRegionHandler}
-            type='button'
-            className='p-2 border-2 border-gray-100 rounded-md shadow'>
-            Region
+            onClick={sortByOceaniaRegion}
+            className='p-2 border-2 border-gray-100 rounded-md shadow'
+            type='button'>
+            {' '}
+            Oceania Region
           </button>
         </div>
         {selectedCountry !== 'COUNTRY' ||

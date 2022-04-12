@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Search({ onChange }) {
+function Search({ setSearchedValue, searchedValue, onChange }) {
   return (
     <div className='mt-10'>
       <label htmlFor='search' className='block   text-white'>
@@ -9,7 +9,11 @@ function Search({ onChange }) {
       <div className='mt-1 relative flex items-center'>
         <input
           type='text'
-          onChange={(event) => onChange(event.target.value)}
+          value={searchedValue}
+          onChange={(event) => {
+            setSearchedValue(event.target.value);
+            onChange(searchedValue);
+          }}
           name='search'
           id='search'
           className=' text-black p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full pr-12 border-2 border-gray-300 rounded-md'

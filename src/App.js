@@ -4,9 +4,12 @@ import AppContainer from './components/AppContainer';
 import List from './components/List';
 import Navbar from './components/Navbar';
 import axios from 'axios';
+import Pagination from './components/Pzgination';
+import Page from './components/Page';
 
 function App() {
   const [data, setData] = useState([]);
+  const [searchedValue, setSearchedValue] = useState('');
   const [defaultData, setDefaultData] = useState([]);
   const [results, setResults] = useState();
   const [resultData, setResultData] = useState();
@@ -16,6 +19,18 @@ function App() {
   const [isAscending, setIsAscending] = useState(true);
   const [isloading, setIsLoading] = useState(false);
   const [isFilterOptionsOpen, setIsFilterOptionsOpen] = useState(false);
+
+  // - Pagination
+  const [countriesPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageNumbers, setPageNumbers] = useState([]);
+
+  const indexOfLastPost = currentPage * countriesPerPage;
+  const indexOfFirstPost = indexOfLastPost - countriesPerPage;
+  const countries = data.slice(indexOfFirstPost, indexOfLastPost);
+
+  // - Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const apiCall = async () => {
@@ -27,7 +42,9 @@ function App() {
 
         setData(response.data);
         setDefaultData(response.data);
-
+        setResultData(null);
+        setResults(false);
+        setSearchedValue('');
         setIsLoading(false);
       } catch (err) {
         console.log(err);
@@ -54,10 +71,17 @@ function App() {
   };
 
   const sortByOceaniaRegion = () => {
-    console.log('yes');
+    setData(() => {
+      let response = data.filter((country) => {
+        return country.region === 'Oceania';
+      });
+
+      return response;
+    });
   };
 
   const searchByAreaHandler = () => {
+    setData(defaultData);
     setData((prev) => {
       let response = prev.filter((country) => {
         if (resultData.area > country.area) {
@@ -73,23 +97,16 @@ function App() {
   };
 
   const sortHandler = () => {
+    console.log({ data });
     if (isAscending) {
-      setData(data.reverse());
+      setData(data.reverse((a, b) => a.name.localeCompare(b.name)));
       setIsAscending(false);
     }
 
     if (!isAscending) {
-      setData(data.reverse());
+      setData(data.sort((a, b) => a.name.localeCompare(b.name)));
       setIsAscending(true);
     }
-  };
-
-  const sortRegionHandler = () => {
-    setData(() => {
-      return data.sort((a, b) => a.region.localeCompare(b.region));
-    });
-
-    setUpdate(true);
   };
 
   const filterHandler = () => {
@@ -112,18 +129,28 @@ function App() {
         isFilterOptionsOpen={isFilterOptionsOpen}
         setIsFilterOptionsOpen={setIsFilterOptionsOpen}
         selectedCountry={selectedCountry}
-        sortRegionHandler={sortRegionHandler}
         setDataReset={setDataReset}
         resetDataHandler={resetDataHandler}
         searchHandler={searchHandler}
         resultData={resultData}
         searchByAreaHandler={searchByAreaHandler}
         sortByOceaniaRegion={sortByOceaniaRegion}
+        searchedValue={searchedValue}
+        setSearchedValue={setSearchedValue}
+      />
+      {/* <Page /> */}
+      <Pagination
+        countriesPerPage={countriesPerPage}
+        totalCountries={data.length}
+        paginate={paginate}
+        currentPage={currentPage}
+        pageNumbers={pageNumbers}
+        setPageNumbers={setPageNumbers}
       />
 
       <AppContainer>
         <List
-          data={data}
+          data={countries}
           isLoading={isloading}
           selectedCountry={selectedCountry}
           setSelectedCountry={setSelectedCountry}
