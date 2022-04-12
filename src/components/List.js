@@ -10,7 +10,6 @@ function List({
   resultData,
   results,
 }) {
-  console.log({ resultData });
   if (isLoading)
     return (
       <div className='flex justify-center items-center tex-xl mt-20'>

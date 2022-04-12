@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Lists({ data, customStyles }) {
+  if (!data) return <div className='text-center'>Country not found</div>;
   return (
     <div
       key={data.name}

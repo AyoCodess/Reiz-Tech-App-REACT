@@ -7,6 +7,7 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState([]);
+  const [defaultData, setDefaultData] = useState([]);
   const [results, setResults] = useState();
   const [resultData, setResultData] = useState();
   const [update, setUpdate] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         );
 
         setData(response.data);
+        setDefaultData(response.data);
 
         setIsLoading(false);
       } catch (err) {
@@ -37,22 +39,18 @@ function App() {
 
   useEffect(() => {
     setUpdate(false);
-    setResults(false);
-    setResultData('');
     setIsFilterOptionsOpen(false);
   }, [data]);
 
   const searchHandler = (value) => {
-    let response = data.find((country) => {
+    let response = defaultData.find((country) => {
       setResults(true);
       return country.name.toLowerCase().includes(value.toLowerCase());
     });
 
     setResultData(response);
 
-    setData((prev) => {
-      return prev;
-    });
+    setData(defaultData);
   };
 
   const sortByOceaniaRegion = () => {
@@ -60,7 +58,18 @@ function App() {
   };
 
   const searchByAreaHandler = () => {
-    console.log('yes');
+    setData((prev) => {
+      let response = prev.filter((country) => {
+        if (resultData.area > country.area) {
+          return country;
+        }
+      });
+
+      // - orders county area sizes from biggest to smallest
+      let newResponse = response.sort((a, b) => b.area - a.area);
+
+      return newResponse;
+    });
   };
 
   const sortHandler = () => {
