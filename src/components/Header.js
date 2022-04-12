@@ -13,7 +13,7 @@ function Header() {
           Find Your Country App
         </div>
       </div>
-      <div className='flex  gap-1 justify-end mt-4'>
+      <div className='flex  gap-2 justify-end mt-4'>
         <div>We Support</div>
         <img className='w-10' src={ukraine} alt='ukraine flag' />
       </div>

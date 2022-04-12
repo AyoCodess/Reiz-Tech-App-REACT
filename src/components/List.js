@@ -1,18 +1,12 @@
 import React from 'react';
 
-const people = [
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  // More people...
-];
-
-function List({ data }) {
-  console.log({ data });
+function List({ data, isLoading }) {
+  if (isLoading)
+    return (
+      <div className='flex justify-center items-center tex-xl mt-20'>
+        <div>Loading... </div>
+      </div>
+    );
   return (
     <div className='grid grid-cols-1 gap-4 mt-5 '>
       {data.map((country) => (

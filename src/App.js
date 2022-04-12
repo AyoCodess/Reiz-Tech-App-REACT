@@ -7,14 +7,20 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState([]);
+  const [isAscending, setIsAscending] = useState(true);
+  const [isloading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const apiCall = async () => {
+      setIsLoading(true);
       try {
         const response = await axios(
           `https://restcountries.com/v2/all?fields=name,region,area`
         );
 
         setData(response.data);
+
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -23,11 +29,28 @@ function App() {
     apiCall();
   }, []);
 
+  const sortHandler = () => {
+    if (isAscending) {
+      setData(data.reverse());
+      setIsAscending(false);
+    }
+
+    if (!isAscending) {
+      setData(data.reverse());
+      setIsAscending(true);
+    }
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        sortHandler={sortHandler}
+        isAscending={isAscending}
+        setIsAscending={setIsAscending}
+      />
+
       <AppContainer>
-        <List data={data} />
+        <List data={data} isLoading={isloading} />
       </AppContainer>
     </>
   );
