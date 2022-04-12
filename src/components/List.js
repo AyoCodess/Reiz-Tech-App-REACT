@@ -1,6 +1,7 @@
 import React from 'react';
 
-function List({ data, isLoading }) {
+function List({ data, isLoading, selectedCountry, setSelectedCountry }) {
+  console.log(data);
   if (isLoading)
     return (
       <div className='flex justify-center items-center tex-xl mt-20'>

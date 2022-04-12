@@ -7,8 +7,12 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [dataReset, setDataReset] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState('COUNTRY');
   const [isAscending, setIsAscending] = useState(true);
   const [isloading, setIsLoading] = useState(false);
+  const [isFilterOptionsOpen, setIsFilterOptionsOpen] = useState(false);
 
   useEffect(() => {
     const apiCall = async () => {
@@ -27,7 +31,11 @@ function App() {
     };
 
     apiCall();
-  }, []);
+  }, [dataReset]);
+
+  useEffect(() => {
+    setUpdate(false);
+  }, [data]);
 
   const sortHandler = () => {
     if (isAscending) {
@@ -41,16 +49,48 @@ function App() {
     }
   };
 
+  const sortRegionHandler = () => {
+    setData(() => {
+      return data.sort((a, b) => a.region.localeCompare(b.region));
+    });
+
+    setUpdate(true);
+  };
+
+  console.log(data);
+
+  const filterHandler = () => {
+    isFilterOptionsOpen
+      ? setIsFilterOptionsOpen(false)
+      : setIsFilterOptionsOpen(true);
+  };
+
+  const resetDataHandler = () => {
+    dataReset ? setDataReset(false) : setDataReset(true);
+  };
+
   return (
     <>
       <Navbar
         sortHandler={sortHandler}
         isAscending={isAscending}
         setIsAscending={setIsAscending}
+        filterHandler={filterHandler}
+        isFilterOptionsOpen={isFilterOptionsOpen}
+        setIsFilterOptionsOpen={setIsFilterOptionsOpen}
+        selectedCountry={selectedCountry}
+        sortRegionHandler={sortRegionHandler}
+        setDataReset={setDataReset}
+        resetDataHandler={resetDataHandler}
       />
 
       <AppContainer>
-        <List data={data} isLoading={isloading} />
+        <List
+          data={data}
+          isLoading={isloading}
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
+        />
       </AppContainer>
     </>
   );

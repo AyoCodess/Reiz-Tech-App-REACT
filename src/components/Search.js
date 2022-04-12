@@ -4,7 +4,7 @@ function Search() {
   return (
     <div className='mt-10'>
       <label htmlFor='search' className='block   text-white'>
-        Search for a country...
+        Search for a country for more options...
       </label>
       <div className='mt-1 relative flex items-center'>
         <input
