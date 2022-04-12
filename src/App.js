@@ -146,6 +146,7 @@ function App() {
         currentPage={currentPage}
         pageNumbers={pageNumbers}
         setPageNumbers={setPageNumbers}
+        data={data}
       />
 
       <AppContainer>

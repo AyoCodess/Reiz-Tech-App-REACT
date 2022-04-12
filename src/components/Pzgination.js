@@ -7,19 +7,22 @@ const Pagination = ({
   currentPage,
   pageNumbers,
   setPageNumbers,
+  data,
 }) => {
   useEffect(() => {
     for (let i = 1; i <= Math.ceil(totalCountries / countriesPerPage); i++) {
-      setPageNumbers((prev) => [i, ...prev]);
+      setPageNumbers((prev) => [...prev, i]);
     }
-  }, []);
+  }, [data]);
 
-  console.log(pageNumbers);
+  const pageArray = pageNumbers.slice(currentPage);
+
+  console.log({ pageNumbers });
 
   return (
     <nav>
       <ul className='flex flex-row flex-wrap gap-1 justify-between p-2 '>
-        {pageNumbers.map((number, count) => {
+        {pageArray.map((number, count) => {
           return count < 5 ? (
             <li key={number} className='border-2 p-1 rounded-md '>
               <a
