@@ -1,7 +1,17 @@
 import './App.css';
+import AppContainer from './components/AppContainer';
+import List from './components/List';
+import Navbar from './components/Navbar';
 
 function App() {
-  return <div className='text-3xl text-red-500'>hey</div>;
+  return (
+    <>
+      <Navbar />
+      <AppContainer>
+        <List />
+      </AppContainer>
+    </>
+  );
 }
 
 export default App;

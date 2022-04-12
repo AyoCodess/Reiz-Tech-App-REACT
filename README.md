@@ -1,4 +1,6 @@
-# Installation
+# Reiz-Tech Take Home Assignment
+
+## Installation
 
 ```
 npm install
@@ -10,9 +12,9 @@ npm start
 
 ## About
 
-take home task set by Reiz-tech
+Take home task set by Reiz-Tech.
 
 ## Live-link
 
 TBA
-# Reiz-Tech-App
+≈
