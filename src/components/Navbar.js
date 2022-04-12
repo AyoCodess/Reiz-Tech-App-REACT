@@ -15,12 +15,16 @@ function Navbar({
   sortRegionHandler,
   setDataReset,
   resetDataHandler,
+  searchHandler,
+  resultData,
+  searchByAreaHandler,
+  sortByOceaniaRegion,
 }) {
   return (
     <div className='container mx-auto p-4 bg-gray-500 text-white shadow-md rounded-md '>
       <div className=' p-2'>
         <Header />
-        <Search />
+        <Search onChange={searchHandler} />
         <SortBtn
           isAscending={isAscending}
           setIsAscending={setIsAscending}
@@ -30,9 +34,15 @@ function Navbar({
           sortRegionHandler={sortRegionHandler}
           setDataReset={setDataReset}
           resetDataHandler={resetDataHandler}
+          resultData={resultData}
         />
         {isFilterOptionsOpen && (
-          <FilterOptions selectedCountry={selectedCountry} />
+          <FilterOptions
+            selectedCountry={selectedCountry}
+            resultData={resultData}
+            searchByAreaHandler={searchByAreaHandler}
+            sortByOceaniaRegion={sortByOceaniaRegion}
+          />
         )}
       </div>
     </div>

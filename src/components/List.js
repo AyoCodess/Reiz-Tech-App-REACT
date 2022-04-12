@@ -1,7 +1,16 @@
 import React from 'react';
+import Lists from './Lists';
 
-function List({ data, isLoading, selectedCountry, setSelectedCountry }) {
-  console.log(data);
+function List({
+  data,
+  isLoading,
+  selectedCountry,
+  setSelectedCountry,
+  filteredCountries,
+  resultData,
+  results,
+}) {
+  console.log({ resultData });
   if (isLoading)
     return (
       <div className='flex justify-center items-center tex-xl mt-20'>
@@ -10,6 +19,16 @@ function List({ data, isLoading, selectedCountry, setSelectedCountry }) {
     );
   return (
     <div className='grid grid-cols-1 gap-4 mt-5 '>
+      {results && (
+        <>
+          <div className='text-xs text-gray-400'>Search Result </div>
+          <Lists data={resultData} customStyles={`border-green-500`} />
+          <hr className='border w-2/3 border-gray-200 mx-auto' />
+        </>
+      )}
+
+      {/* {data.length === 0 && <h1>No country found.</h1>} */}
+
       {data.map((country) => (
         <div
           key={country.name}
@@ -25,17 +44,6 @@ function List({ data, isLoading, selectedCountry, setSelectedCountry }) {
               Area Size: {country.area}
             </p>
           </div>
-          {/* // - data is not useful */}
-          {/* <div className='text-sm'>
-            {country.independent === false && (
-              <span className='text-red-500'>
-                Not <br /> Independant
-              </span>
-            )}
-            {country.independent === true && (
-              <span className='text-green-500'>'Independant'</span>
-            )}
-          </div> */}
         </div>
       ))}
     </div>

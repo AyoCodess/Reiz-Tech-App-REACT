@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import './App.css';
 import AppContainer from './components/AppContainer';
 import List from './components/List';
@@ -7,6 +7,8 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState([]);
+  const [results, setResults] = useState();
+  const [resultData, setResultData] = useState();
   const [update, setUpdate] = useState(false);
   const [dataReset, setDataReset] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState('COUNTRY');
@@ -35,7 +37,31 @@ function App() {
 
   useEffect(() => {
     setUpdate(false);
+    setResults(false);
+    setResultData('');
+    setIsFilterOptionsOpen(false);
   }, [data]);
+
+  const searchHandler = (value) => {
+    let response = data.find((country) => {
+      setResults(true);
+      return country.name.toLowerCase().includes(value.toLowerCase());
+    });
+
+    setResultData(response);
+
+    setData((prev) => {
+      return prev;
+    });
+  };
+
+  const sortByOceaniaRegion = () => {
+    console.log('yes');
+  };
+
+  const searchByAreaHandler = () => {
+    console.log('yes');
+  };
 
   const sortHandler = () => {
     if (isAscending) {
@@ -56,8 +82,6 @@ function App() {
 
     setUpdate(true);
   };
-
-  console.log(data);
 
   const filterHandler = () => {
     isFilterOptionsOpen
@@ -82,6 +106,10 @@ function App() {
         sortRegionHandler={sortRegionHandler}
         setDataReset={setDataReset}
         resetDataHandler={resetDataHandler}
+        searchHandler={searchHandler}
+        resultData={resultData}
+        searchByAreaHandler={searchByAreaHandler}
+        sortByOceaniaRegion={sortByOceaniaRegion}
       />
 
       <AppContainer>
@@ -90,6 +118,8 @@ function App() {
           isLoading={isloading}
           selectedCountry={selectedCountry}
           setSelectedCountry={setSelectedCountry}
+          resultData={resultData}
+          results={results}
         />
       </AppContainer>
     </>
