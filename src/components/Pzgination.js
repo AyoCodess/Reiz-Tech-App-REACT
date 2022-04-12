@@ -15,23 +15,38 @@ const Pagination = ({
     }
   }, [data]);
 
-  const pageArray = pageNumbers.slice(currentPage - 1);
+  let pageArray = pageNumbers.slice(currentPage, currentPage + 5);
 
-  console.log({ pageNumbers });
+  // - resets the pagination
+  if (currentPage === 20) {
+    pageArray = pageNumbers.slice(currentPage, currentPage + 5);
+  }
 
   return (
-    <nav className='max-w-[20rem] mx-auto'>
-      <ul className='flex flex-row flex-wrap gap-1 justify-between p-2 '>
+    <nav className='max-w-[20rem] mx-auto flex items-center gap-1'>
+      <button
+        onClick={() => {
+          console.log('yes');
+          pageArray = pageArray.slice(1);
+          console.log({ pageArray });
+        }}
+        type='button'>
+        {' '}
+        Previous
+      </button>
+      <ul className='flex flex-row mx-auto flex-wrap gap-1 justify-between p-2 '>
         {pageArray.map((number, count) => {
-          return count < 5 ? (
+          console.log(number);
+          return (
             <li key={number} className='border-2 p-1 rounded-md '>
               <div onClick={() => paginate(number)} className='text-gray-500'>
                 {number}
               </div>
             </li>
-          ) : null;
+          );
         })}
       </ul>
+      <button type='button'>Next</button>
     </nav>
   );
 };
