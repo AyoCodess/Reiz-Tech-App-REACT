@@ -25,12 +25,9 @@ const Pagination = ({
         {pageArray.map((number, count) => {
           return count < 5 ? (
             <li key={number} className='border-2 p-1 rounded-md '>
-              <a
-                onClick={() => paginate(number)}
-                href='!#'
-                className='text-gray-500'>
+              <div onClick={() => paginate(number)} className='text-gray-500'>
                 {number}
-              </a>
+              </div>
             </li>
           ) : null;
         })}

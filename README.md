@@ -16,5 +16,5 @@ Take home task set by Reiz-Tech.
 
 ## Live-link
 
-TBA
+https://reiz-tech-app.netlify.app
 ≈
