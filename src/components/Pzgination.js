@@ -15,12 +15,12 @@ const Pagination = ({
     }
   }, [data]);
 
-  const pageArray = pageNumbers.slice(currentPage);
+  const pageArray = pageNumbers.slice(currentPage - 1);
 
   console.log({ pageNumbers });
 
   return (
-    <nav>
+    <nav className='max-w-[20rem] mx-auto'>
       <ul className='flex flex-row flex-wrap gap-1 justify-between p-2 '>
         {pageArray.map((number, count) => {
           return count < 5 ? (

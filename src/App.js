@@ -139,17 +139,17 @@ function App() {
         setSearchedValue={setSearchedValue}
       />
       {/* <Page /> */}
-      <Pagination
-        countriesPerPage={countriesPerPage}
-        totalCountries={data.length}
-        paginate={paginate}
-        currentPage={currentPage}
-        pageNumbers={pageNumbers}
-        setPageNumbers={setPageNumbers}
-        data={data}
-      />
 
       <AppContainer>
+        <Pagination
+          countriesPerPage={countriesPerPage}
+          totalCountries={data.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          pageNumbers={pageNumbers}
+          setPageNumbers={setPageNumbers}
+          data={data}
+        />
         <List
           data={countries}
           isLoading={isloading}
