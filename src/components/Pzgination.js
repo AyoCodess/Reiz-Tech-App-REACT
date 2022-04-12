@@ -18,8 +18,8 @@ const Pagination = ({
   let pageArray = pageNumbers.slice(currentPage, currentPage + 5);
 
   // - resets the pagination
-  if (currentPage === 20) {
-    pageArray = pageNumbers.slice(currentPage, currentPage + 5);
+  if (currentPage === 25) {
+    pageArray = pageNumbers.slice(1, 6);
   }
 
   return (
