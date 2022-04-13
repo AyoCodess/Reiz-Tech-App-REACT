@@ -9,6 +9,7 @@ function Navbar({
   isAscending,
   filterHandler,
   isFilterOptionsOpen,
+  setIsFilterOptionsOpen,
   setDataReset,
   resetDataHandler,
   searchHandler,
@@ -26,6 +27,7 @@ function Navbar({
           onChange={searchHandler}
           searchedValue={searchedValue}
           setSearchedValue={setSearchedValue}
+          setIsFilterOptionsOpen={setIsFilterOptionsOpen}
         />
         <SortBtn
           isAscending={isAscending}
@@ -35,6 +37,7 @@ function Navbar({
           resetDataHandler={resetDataHandler}
           resultData={resultData}
           sortByOceaniaRegion={sortByOceaniaRegion}
+          isFilterOptionsOpen={isFilterOptionsOpen}
         />
         {isFilterOptionsOpen && (
           <FilterOptions

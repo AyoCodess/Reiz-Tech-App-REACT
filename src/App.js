@@ -125,6 +125,8 @@ function App() {
     dataReset ? setDataReset(false) : setDataReset(true);
   };
 
+  console.log({ resultData });
+
   return (
     <>
       <Navbar
@@ -132,6 +134,7 @@ function App() {
         isAscending={isAscending}
         filterHandler={filterHandler}
         isFilterOptionsOpen={isFilterOptionsOpen}
+        setIsFilterOptionsOpen={setIsFilterOptionsOpen}
         setDataReset={setDataReset}
         resetDataHandler={resetDataHandler}
         searchHandler={searchHandler}

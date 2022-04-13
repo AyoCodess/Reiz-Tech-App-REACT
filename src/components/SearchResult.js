@@ -13,6 +13,7 @@ function SearchResult({ data, customStyles, searchedValue, setResultData }) {
               data.find((dataCountry) => {
                 if (country.name === dataCountry.name) {
                 }
+
                 return setResultData([country]);
               });
             }}

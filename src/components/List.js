@@ -8,6 +8,7 @@ function List({
   results,
   searchedValue,
   setResultData,
+  setIsFilterOptionsOpen,
 }) {
   if (isLoading)
     return (

@@ -9,6 +9,7 @@ function SortBtn({
   resetDataHandler,
   resultData,
   sortByOceaniaRegion,
+  isFilterOptionsOpen,
 }) {
   const [displayTip, setDisplayTip] = useState(false);
   return (
@@ -41,7 +42,7 @@ function SortBtn({
             Oceania Region
           </button>
         </div>
-        {resultData && (
+        {resultData.length >= 1 && resultData !== undefined && (
           <div className='flex items-center'>
             <button
               onClick={filterHandler}

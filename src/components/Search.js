@@ -1,12 +1,18 @@
 import React from 'react';
 
-function Search({ setSearchedValue, searchedValue, onChange }) {
+function Search({
+  setSearchedValue,
+  searchedValue,
+  onChange,
+  setIsFilterOptionsOpen,
+}) {
   const keyDownHandler = (event) => {
     if (event.key === 'Enter') {
       setSearchedValue(event.target.value);
       onChange(searchedValue);
     }
   };
+
   return (
     <div className='mt-10'>
       <label htmlFor='search' className='block   text-white'>
@@ -15,12 +21,19 @@ function Search({ setSearchedValue, searchedValue, onChange }) {
       <div className='mt-1 relative flex items-center'>
         <input
           type='text'
+          autoComplete='off'
           placeholder='Search for a country'
           value={searchedValue}
           onKeyDown={(event) => keyDownHandler(event)}
           onChange={(event) => {
-            setSearchedValue(event.target.value);
-            onChange(searchedValue);
+            if (event.target.value !== '') {
+              setSearchedValue(event.target.value);
+              onChange(searchedValue);
+            } else {
+              setIsFilterOptionsOpen(false);
+              setSearchedValue(event.target.value);
+              onChange(searchedValue);
+            }
           }}
           name='search'
           id='search'

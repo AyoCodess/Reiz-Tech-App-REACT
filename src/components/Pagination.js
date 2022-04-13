@@ -37,7 +37,7 @@ const Pagination = ({
       {!isLoading && data.length > 10 && (
         <nav className='max-w-[25rem]  flex flex-wrap items-center gap-1'>
           {/* // - hides next and prev buttons when there is less 5 page numbers to be displayed in the UI  */}
-          {pageNumbers.length > numberOfPageNumbersDisplayed && (
+          {pageNumbers.length !== numberOfPageNumbersDisplayed && (
             <PaginationBtn
               title={'Previous'}
               onClick={() => {
@@ -67,7 +67,7 @@ const Pagination = ({
               );
             })}
           </ul>
-          {pageNumbers.length > numberOfPageNumbersDisplayed && (
+          {pageNumbers.length !== numberOfPageNumbersDisplayed && (
             <PaginationBtn
               title={'Next'}
               onClick={() => {
