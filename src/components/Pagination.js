@@ -7,6 +7,7 @@ const Pagination = ({
   paginate,
   currentPage,
   isLoading,
+  data,
 }) => {
   let pageNumbers = [];
   let numberOfPageNumbersDisplayed = 4;
@@ -14,6 +15,8 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalCountries / countriesPerPage); i++) {
     pageNumbers.push(i);
   }
+
+  console.log({ data });
 
   //   Array.from(
   //     { length: Math.ceil(totalCountries / countriesPerPage) },
@@ -33,7 +36,7 @@ const Pagination = ({
 
   return (
     <>
-      {!isLoading && numbersArray.length > 0 && (
+      {!isLoading && data.length > 10 && (
         <div className=' flex flex-wrap items-center justify-between w-full'>
           <nav className='max-w-[22rem]  flex items-center gap-1'>
             <PaginationBtn
@@ -52,13 +55,6 @@ const Pagination = ({
                     className='border-2 p-1 w-8 text-center rounded-md '>
                     <div
                       onClick={() => {
-                        // - when numbers array has less page numbers to display than desired, the UI stops updating the page numbers dynamically
-                        if (
-                          number >
-                          pageNumbers.length - numberOfPageNumbersDisplayed
-                        ) {
-                          return;
-                        }
                         paginate(number);
                       }}
                       className='text-gray-500'>

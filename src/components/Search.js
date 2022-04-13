@@ -1,6 +1,13 @@
 import React from 'react';
 
 function Search({ setSearchedValue, searchedValue, onChange }) {
+  const keyDownHandler = (event) => {
+    console.log(event);
+    if (event.key === 'Enter') {
+      setSearchedValue(event.target.value);
+      onChange(searchedValue);
+    }
+  };
   return (
     <div className='mt-10'>
       <label htmlFor='search' className='block   text-white'>
@@ -11,6 +18,7 @@ function Search({ setSearchedValue, searchedValue, onChange }) {
           type='text'
           placeholder='Search for a country'
           value={searchedValue}
+          onKeyDown={(event) => keyDownHandler(event)}
           onChange={(event) => {
             setSearchedValue(event.target.value);
             onChange(searchedValue);

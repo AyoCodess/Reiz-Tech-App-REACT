@@ -68,6 +68,7 @@ function App() {
   };
 
   const sortByOceaniaRegion = () => {
+    setCurrentPage(1);
     setData(() => {
       let response = data.filter((country) => {
         return country.region === 'Oceania';
@@ -78,6 +79,7 @@ function App() {
   };
 
   const searchByAreaHandler = () => {
+    setCurrentPage(1);
     setData(defaultData);
     setData((prev) => {
       let response = prev.filter((country) => {
@@ -94,7 +96,6 @@ function App() {
   };
 
   const sortHandler = () => {
-    console.log({ data });
     if (isAscending) {
       setData(data.reverse((a, b) => a.name.localeCompare(b.name)));
       setIsAscending(false);

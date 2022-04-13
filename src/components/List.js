@@ -8,6 +8,8 @@ function List({ data, isLoading, resultData, results, searchedValue }) {
         <div>Loading... </div>
       </div>
     );
+
+  console.log({ data });
   return (
     <div className='grid grid-cols-1 gap-4 mt-5 '>
       {results && (
