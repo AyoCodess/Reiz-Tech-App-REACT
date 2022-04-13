@@ -19,19 +19,20 @@ function SortBtn({
         <div className='relative flex items-center gap-2'>
           <p>Sort By </p>
           <button
-            onClick={() => {
-              sortHandler();
-
-              displayTip ? setDisplayTip(false) : setDisplayTip(true);
-            }}
+            onClick={sortHandler}
             type='button'
             className='p-2 border-2 border-gray-100 w-36 bg-gray-600 rounded-md shadow'>
             {!isAscending && 'Ascending'}
             {isAscending && 'Descending'}
-            <span className='ml-2 inline-block mb-[-0.2rem]  '>
+            <span
+              onClick={() => {
+                displayTip ? setDisplayTip(false) : setDisplayTip(true);
+              }}
+              className='ml-2 inline-block mb-[-0.2rem]  '>
               <InformationCircleIcon className='h-4  ' />
             </span>
           </button>
+
           {displayTip && <Tooltip text={'Only sorts by country name'} />}
         </div>
 
