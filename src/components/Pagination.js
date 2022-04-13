@@ -47,7 +47,7 @@ const Pagination = ({
               }}
             />
           )}
-          <p className='py-1 px-2 bg-gray-400 text-white shadow rounded-md'>
+          <p className='py-1 px-2 bg-black text-white shadow rounded-md'>
             Page {currentPage}
           </p>
           <ul className='flex flex-row  mx-auto flex-wrap gap-1 justify-between p-2 '>
@@ -55,7 +55,7 @@ const Pagination = ({
               return (
                 <li
                   key={number}
-                  className='border-2 p-1 w-8 text-center rounded-md '>
+                  className='border-2 p-1 w-8 text-center rounded-md cursor-pointer '>
                   <div
                     onClick={() => {
                       paginate(number);

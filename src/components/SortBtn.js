@@ -20,7 +20,7 @@ function SortBtn({
           <button
             onClick={sortHandler}
             type='button'
-            className='p-2 border-2 border-gray-100 rounded-md shadow'>
+            className='p-2 border-2 border-gray-100  bg-black rounded-md shadow'>
             {!isAscending && 'Ascending'}
             {isAscending && 'Descending'}
             <span
@@ -36,7 +36,7 @@ function SortBtn({
         <div className='flex items-center'>
           <button
             onClick={sortByOceaniaRegion}
-            className='p-2 border-2 border-gray-100 rounded-md shadow'
+            className='p-2 border-2 border-gray-100 bg-black rounded-md shadow'
             type='button'>
             {' '}
             Oceania Region
@@ -49,7 +49,7 @@ function SortBtn({
               <button
                 onClick={filterHandler}
                 type='button'
-                className='p-2 border-2 border-gray-100 rounded-md shadow'>
+                className='p-2 border-2 border-gray-100 bg-black  rounded-md shadow'>
                 filters
               </button>
             </div>
@@ -58,7 +58,7 @@ function SortBtn({
           <button
             onClick={resetDataHandler}
             type='button'
-            className='p-2 border-2 border-gray-100 rounded-md shadow'>
+            className='p-2 border-2 border-gray-100 bg-black  rounded-md shadow'>
             Reset
           </button>
         </div>
