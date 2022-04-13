@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Lists({ data, customStyles }) {
-  if (!data) return <div className='text-center'>Country not found</div>;
+function SearchResult({ data, customStyles, searchedValue }) {
+  if (!data || searchedValue === '')
+    return <div className='text-center'>Country not found</div>;
   return (
     <div
       key={data.name}
@@ -19,4 +20,4 @@ function Lists({ data, customStyles }) {
   );
 }
 
-export default Lists;
+export default SearchResult;

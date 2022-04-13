@@ -1,8 +1,6 @@
 import React from 'react';
 
 function FilterOptions({
-  selectedCountry,
-  onClick,
   resultData,
   searchByAreaHandler,
   sortByOceaniaRegion,

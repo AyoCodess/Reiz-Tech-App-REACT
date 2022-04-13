@@ -1,15 +1,7 @@
 import React from 'react';
-import Lists from './Lists';
+import SearchResult from './SearchResult';
 
-function List({
-  data,
-  isLoading,
-  selectedCountry,
-  setSelectedCountry,
-  filteredCountries,
-  resultData,
-  results,
-}) {
+function List({ data, isLoading, resultData, results, searchedValue }) {
   if (isLoading)
     return (
       <div className='flex justify-center items-center tex-xl mt-20'>
@@ -21,12 +13,15 @@ function List({
       {results && (
         <>
           <div className='text-xs text-gray-400'>Search Result </div>
-          <Lists data={resultData} customStyles={`border-green-500`} />
+          <SearchResult
+            data={resultData}
+            customStyles={`border-green-500`}
+            textArea={'Area'}
+            searchedValue={searchedValue}
+          />
           <hr className='border w-2/3 border-gray-200 mx-auto' />
         </>
       )}
-
-      {/* {data.length === 0 && <h1>No country found.</h1>} */}
 
       {data.map((country) => (
         <div

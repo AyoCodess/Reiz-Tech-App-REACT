@@ -9,6 +9,7 @@ function Search({ setSearchedValue, searchedValue, onChange }) {
       <div className='mt-1 relative flex items-center'>
         <input
           type='text'
+          placeholder='Search for a country'
           value={searchedValue}
           onChange={(event) => {
             setSearchedValue(event.target.value);

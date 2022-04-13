@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FilterOptions from './FilterOptions';
 import Header from './Header';
 import Search from './Search';
@@ -7,11 +7,8 @@ import SortBtn from './SortBtn';
 function Navbar({
   sortHandler,
   isAscending,
-  setIsAscending,
   filterHandler,
   isFilterOptionsOpen,
-  setIsFilterOptionsOpen,
-  selectedCountry,
   setDataReset,
   resetDataHandler,
   searchHandler,
@@ -32,10 +29,8 @@ function Navbar({
         />
         <SortBtn
           isAscending={isAscending}
-          setIsAscending={setIsAscending}
           sortHandler={sortHandler}
           filterHandler={filterHandler}
-          selectedCountry={selectedCountry}
           setDataReset={setDataReset}
           resetDataHandler={resetDataHandler}
           resultData={resultData}
@@ -43,7 +38,6 @@ function Navbar({
         />
         {isFilterOptionsOpen && (
           <FilterOptions
-            selectedCountry={selectedCountry}
             resultData={resultData}
             searchByAreaHandler={searchByAreaHandler}
             sortByOceaniaRegion={sortByOceaniaRegion}

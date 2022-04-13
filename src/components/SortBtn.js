@@ -2,10 +2,8 @@ import React from 'react';
 
 function SortBtn({
   isAscending,
-  setIsAscending,
   sortHandler,
   filterHandler,
-  selectedCountry,
   resetDataHandler,
   resultData,
   sortByOceaniaRegion,
@@ -32,17 +30,16 @@ function SortBtn({
             Oceania Region
           </button>
         </div>
-        {selectedCountry !== 'COUNTRY' ||
-          (resultData && (
-            <div className='flex items-center'>
-              <button
-                onClick={filterHandler}
-                type='button'
-                className='p-2 border-2 border-gray-100 rounded-md shadow'>
-                filters
-              </button>
-            </div>
-          ))}
+        {resultData && (
+          <div className='flex items-center'>
+            <button
+              onClick={filterHandler}
+              type='button'
+              className='p-2 border-2 border-gray-100 rounded-md shadow'>
+              filters
+            </button>
+          </div>
+        )}
         <div className='flex items-center '>
           <button
             onClick={resetDataHandler}

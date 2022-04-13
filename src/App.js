@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import AppContainer from './components/AppContainer';
 import List from './components/List';
 import Navbar from './components/Navbar';
 import axios from 'axios';
-import Pagination from './components/Pzgination';
-import Page from './components/Page';
+import Pagination from './components/Pagination';
 
 function App() {
   const [data, setData] = useState([]);
@@ -13,22 +12,21 @@ function App() {
   const [defaultData, setDefaultData] = useState([]);
   const [results, setResults] = useState();
   const [resultData, setResultData] = useState();
-  const [update, setUpdate] = useState(false);
+  const [, setUpdate] = useState(false);
   const [dataReset, setDataReset] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState('COUNTRY');
   const [isAscending, setIsAscending] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isFilterOptionsOpen, setIsFilterOptionsOpen] = useState(false);
 
   // - Pagination
   const [countriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const indexOfLastPost = currentPage * countriesPerPage;
-  const indexOfFirstPost = indexOfLastPost - countriesPerPage;
-  const countries = data.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastCountry = currentPage * countriesPerPage;
+  const IndexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const countries = data.slice(IndexOfFirstCountry, indexOfLastCountry);
 
-  // - Change page
+  // - Change page number
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
@@ -109,6 +107,7 @@ function App() {
   };
 
   const filterHandler = () => {
+    setCurrentPage(1);
     isFilterOptionsOpen
       ? setIsFilterOptionsOpen(false)
       : setIsFilterOptionsOpen(true);
@@ -123,11 +122,8 @@ function App() {
       <Navbar
         sortHandler={sortHandler}
         isAscending={isAscending}
-        setIsAscending={setIsAscending}
         filterHandler={filterHandler}
         isFilterOptionsOpen={isFilterOptionsOpen}
-        setIsFilterOptionsOpen={setIsFilterOptionsOpen}
-        selectedCountry={selectedCountry}
         setDataReset={setDataReset}
         resetDataHandler={resetDataHandler}
         searchHandler={searchHandler}
@@ -137,7 +133,6 @@ function App() {
         searchedValue={searchedValue}
         setSearchedValue={setSearchedValue}
       />
-      {/* <Page /> */}
 
       <AppContainer>
         <Pagination
@@ -146,14 +141,15 @@ function App() {
           paginate={paginate}
           currentPage={currentPage}
           data={data}
+          isLoading={isLoading}
         />
+
         <List
           data={countries}
-          isLoading={isloading}
-          selectedCountry={selectedCountry}
-          setSelectedCountry={setSelectedCountry}
+          isLoading={isLoading}
           resultData={resultData}
           results={results}
+          searchedValue={searchedValue}
         />
       </AppContainer>
     </>
