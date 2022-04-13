@@ -35,7 +35,7 @@ function SortBtn({
           {displayTip && <Tooltip text={'Only sorts by country name'} />}
         </div>
 
-        <NavBtn onClick={sortByOceaniaRegion} text={' Oceania Region'} />
+        <NavBtn onClick={sortByOceaniaRegion} text={'Oceania Region'} />
 
         {resultData.length >= 1 &&
           resultData !== undefined &&
