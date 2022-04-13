@@ -16,8 +16,6 @@ const Pagination = ({
     pageNumbers.push(i);
   }
 
-  console.log({ data });
-
   //   Array.from(
   //     { length: Math.ceil(totalCountries / countriesPerPage) },
   //     (x, v) => v + 1
@@ -37,53 +35,51 @@ const Pagination = ({
   return (
     <>
       {!isLoading && data.length > 10 && (
-        <div className=' flex flex-wrap items-center justify-between w-full'>
-          <nav className='max-w-[22rem]  flex items-center gap-1'>
-            {/* // - hides next and prev buttons when there is less 5 page numbers to be displayed in the UI  */}
-            {pageNumbers.length > numberOfPageNumbersDisplayed && (
-              <PaginationBtn
-                title={'Previous'}
-                onClick={() => {
-                  if (currentPage > 1) {
-                    paginate(currentPage - 1);
-                  }
-                }}
-              />
-            )}
-            <ul className='flex flex-row  mx-auto flex-wrap gap-1 justify-between p-2 '>
-              {numbersArray.map((number, i) => {
-                return (
-                  <li
-                    key={number}
-                    className='border-2 p-1 w-8 text-center rounded-md '>
-                    <div
-                      onClick={() => {
-                        paginate(number);
-                      }}
-                      className='text-gray-500'>
-                      {number}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-            {pageNumbers.length > numberOfPageNumbersDisplayed && (
-              <PaginationBtn
-                title={'Next'}
-                onClick={() => {
-                  if (
-                    currentPage <
-                    pageNumbers.length - numberOfPageNumbersDisplayed
-                  )
-                    paginate(currentPage + 1);
-                }}
-              />
-            )}
-          </nav>
+        <nav className='max-w-[25rem]  flex flex-wrap items-center gap-1'>
+          {/* // - hides next and prev buttons when there is less 5 page numbers to be displayed in the UI  */}
+          {pageNumbers.length > numberOfPageNumbersDisplayed && (
+            <PaginationBtn
+              title={'Previous'}
+              onClick={() => {
+                if (currentPage > 1) {
+                  paginate(currentPage - 1);
+                }
+              }}
+            />
+          )}
           <p className='py-1 px-2 bg-gray-400 text-white shadow rounded-md'>
             Page {currentPage}
           </p>
-        </div>
+          <ul className='flex flex-row  mx-auto flex-wrap gap-1 justify-between p-2 '>
+            {numbersArray.map((number, i) => {
+              return (
+                <li
+                  key={number}
+                  className='border-2 p-1 w-8 text-center rounded-md '>
+                  <div
+                    onClick={() => {
+                      paginate(number);
+                    }}
+                    className='text-gray-500'>
+                    {number}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          {pageNumbers.length > numberOfPageNumbersDisplayed && (
+            <PaginationBtn
+              title={'Next'}
+              onClick={() => {
+                if (
+                  currentPage <
+                  pageNumbers.length - numberOfPageNumbersDisplayed
+                )
+                  paginate(currentPage + 1);
+              }}
+            />
+          )}
+        </nav>
       )}
     </>
   );

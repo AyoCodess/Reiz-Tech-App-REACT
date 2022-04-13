@@ -50,18 +50,18 @@ function App() {
     apiCall();
   }, []);
 
-  // - resets app global state and
+  // - resets app global state and uses'cached' api call data
   useEffect(() => {
     setData(defaultData);
     setResultData([]);
     setIsFilterOptionsOpen(false);
     setResults(false);
     setSearchedValue('');
-  }, [dataReset]);
+  }, [dataReset, defaultData]);
 
   // - finds searched for country via a duplicate copy of 'data' i.e 'defaultData', as we dont want to mutate 'data' as we are doing other stuff with it simultaneously.
   const searchHandler = (value) => {
-    let response = defaultData.find((country) => {
+    let response = defaultData.filter((country) => {
       setResults(true);
       return country.name.toLowerCase().includes(value.toLowerCase());
     });
@@ -153,6 +153,7 @@ function App() {
           data={countries}
           isLoading={isLoading}
           resultData={resultData}
+          setResultData={setResultData}
           results={results}
           searchedValue={searchedValue}
         />

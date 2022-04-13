@@ -1,7 +1,14 @@
 import React from 'react';
 import SearchResult from './SearchResult';
 
-function List({ data, isLoading, resultData, results, searchedValue }) {
+function List({
+  data,
+  isLoading,
+  resultData,
+  results,
+  searchedValue,
+  setResultData,
+}) {
   if (isLoading)
     return (
       <div className='flex justify-center items-center tex-xl mt-20'>
@@ -13,9 +20,10 @@ function List({ data, isLoading, resultData, results, searchedValue }) {
     <div className='grid grid-cols-1 gap-4 mt-5 '>
       {results && (
         <>
-          <div className='text-xs text-gray-400'>Search Result </div>
+          <div className='text-xs text-gray-400'>Search Results </div>
           <SearchResult
             data={resultData}
+            setResultData={setResultData}
             customStyles={`border-green-500`}
             textArea={'Area'}
             searchedValue={searchedValue}
