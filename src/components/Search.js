@@ -2,7 +2,6 @@ import React from 'react';
 
 function Search({ setSearchedValue, searchedValue, onChange }) {
   const keyDownHandler = (event) => {
-    console.log(event);
     if (event.key === 'Enter') {
       setSearchedValue(event.target.value);
       onChange(searchedValue);

@@ -39,14 +39,17 @@ const Pagination = ({
       {!isLoading && data.length > 10 && (
         <div className=' flex flex-wrap items-center justify-between w-full'>
           <nav className='max-w-[22rem]  flex items-center gap-1'>
-            <PaginationBtn
-              title={'Previous'}
-              onClick={() => {
-                if (currentPage > 1) {
-                  paginate(currentPage - 1);
-                }
-              }}
-            />
+            {/* // - hides next and prev buttons when there is less 5 page numbers to be displayed in the UI  */}
+            {pageNumbers.length > numberOfPageNumbersDisplayed && (
+              <PaginationBtn
+                title={'Previous'}
+                onClick={() => {
+                  if (currentPage > 1) {
+                    paginate(currentPage - 1);
+                  }
+                }}
+              />
+            )}
             <ul className='flex flex-row  mx-auto flex-wrap gap-1 justify-between p-2 '>
               {numbersArray.map((number, i) => {
                 return (
@@ -64,16 +67,18 @@ const Pagination = ({
                 );
               })}
             </ul>
-            <PaginationBtn
-              title={'Next'}
-              onClick={() => {
-                if (
-                  currentPage <
-                  pageNumbers.length - numberOfPageNumbersDisplayed
-                )
-                  paginate(currentPage + 1);
-              }}
-            />
+            {pageNumbers.length > numberOfPageNumbersDisplayed && (
+              <PaginationBtn
+                title={'Next'}
+                onClick={() => {
+                  if (
+                    currentPage <
+                    pageNumbers.length - numberOfPageNumbersDisplayed
+                  )
+                    paginate(currentPage + 1);
+                }}
+              />
+            )}
           </nav>
           <p className='py-1 px-2 bg-gray-400 text-white shadow rounded-md'>
             Page {currentPage}
