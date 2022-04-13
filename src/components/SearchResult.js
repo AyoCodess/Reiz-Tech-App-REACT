@@ -1,7 +1,7 @@
 import React from 'react';
 
 function SearchResult({ data, customStyles, searchedValue, setResultData }) {
-  if (!data || searchedValue === '')
+  if (!data || searchedValue === '' || data.length === 0)
     return <div className='text-center'>Country not found</div>;
   return (
     <>
