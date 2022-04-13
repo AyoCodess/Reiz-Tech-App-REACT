@@ -12,7 +12,6 @@ function App() {
   const [defaultData, setDefaultData] = useState([]);
   const [results, setResults] = useState(false);
   const [resultData, setResultData] = useState([]);
-  const [, setUpdate] = useState(false);
   const [dataReset, setDataReset] = useState(false);
   const [isAscending, setIsAscending] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,13 +48,16 @@ function App() {
     };
 
     apiCall();
-  }, [dataReset]);
+  }, []);
 
   // - resets app global state and
   useEffect(() => {
-    setUpdate(false);
+    setData(defaultData);
+    setResultData([]);
     setIsFilterOptionsOpen(false);
-  }, [data]);
+    setResults(false);
+    setSearchedValue('');
+  }, [dataReset]);
 
   // - finds searched for country via a duplicate copy of 'data' i.e 'defaultData', as we dont want to mutate 'data' as we are doing other stuff with it simultaneously.
   const searchHandler = (value) => {
