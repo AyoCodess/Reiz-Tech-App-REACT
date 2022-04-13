@@ -40,7 +40,6 @@ function Navbar({
           <FilterOptions
             resultData={resultData}
             searchByAreaHandler={searchByAreaHandler}
-            sortByOceaniaRegion={sortByOceaniaRegion}
           />
         )}
       </div>

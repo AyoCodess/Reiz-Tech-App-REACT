@@ -85,9 +85,12 @@ function App() {
   const searchByAreaHandler = () => {
     setCurrentPage(1);
     setData(defaultData);
+
+    console.log({ data });
+    console.log({ resultData });
     setData((prev) => {
       let response = prev.filter((country) => {
-        if (resultData.area > country.area) {
+        if (resultData[0].area > country.area) {
           return country;
         }
       });
