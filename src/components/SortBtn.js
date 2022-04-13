@@ -18,16 +18,16 @@ function SortBtn({
         <div className='relative flex items-center gap-2'>
           <p>Sort By </p>
           <button
-            onClick={sortHandler}
+            onClick={() => {
+              sortHandler();
+
+              displayTip ? setDisplayTip(false) : setDisplayTip(true);
+            }}
             type='button'
-            className='p-2 border-2 border-gray-100  bg-black rounded-md shadow'>
+            className='p-2 border-2 border-gray-100 w-36 bg-black rounded-md shadow'>
             {!isAscending && 'Ascending'}
             {isAscending && 'Descending'}
-            <span
-              onClick={() =>
-                displayTip ? setDisplayTip(false) : setDisplayTip(true)
-              }
-              className='ml-2 inline-block mb-[-0.2rem]  '>
+            <span className='ml-2 inline-block mb-[-0.2rem]  '>
               <InformationCircleIcon className='h-4  ' />
             </span>
           </button>
