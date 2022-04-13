@@ -20,7 +20,7 @@ function Navbar({
   setSearchedValue,
 }) {
   return (
-    <div className='container mx-auto p-4 bg-gray-500 text-white shadow-md rounded-md '>
+    <div className='container mx-auto p-4 bg-gray-500 text-white shadow-md sm:rounded-md '>
       <div className=' p-2'>
         <Header />
         <Search
