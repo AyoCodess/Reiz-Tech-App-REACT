@@ -1,4 +1,4 @@
-# Reiz-Tech Take Home Assignment
+# Reiz-Tech
 
 ## Installation
 

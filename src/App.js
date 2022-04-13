@@ -23,7 +23,6 @@ function App() {
   // - Pagination
   const [countriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageNumbers, setPageNumbers] = useState([]);
 
   const indexOfLastPost = currentPage * countriesPerPage;
   const indexOfFirstPost = indexOfLastPost - countriesPerPage;
@@ -146,8 +145,6 @@ function App() {
           totalCountries={data.length}
           paginate={paginate}
           currentPage={currentPage}
-          pageNumbers={pageNumbers}
-          setPageNumbers={setPageNumbers}
           data={data}
         />
         <List

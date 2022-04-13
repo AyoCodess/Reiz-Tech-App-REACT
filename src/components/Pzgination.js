@@ -5,38 +5,29 @@ const Pagination = ({
   totalCountries,
   paginate,
   currentPage,
-  pageNumbers,
   setPageNumbers,
   data,
 }) => {
-  useEffect(() => {
-    for (let i = 1; i <= Math.ceil(totalCountries / countriesPerPage); i++) {
-      setPageNumbers((prev) => [...prev, i]);
-    }
-  }, [data]);
+  let pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalCountries / countriesPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   let pageArray = pageNumbers.slice(currentPage, currentPage + 5);
 
-  // - resets the pagination
-  if (currentPage === 25) {
-    pageArray = pageNumbers.slice(1, 6);
-  }
+  //   // - resets the pagination
+  //   if (currentPage === 25) {
+  //     pageArray = pageNumbers.slice(1, 6);
+  //   }
 
   return (
     <nav className='max-w-[20rem] mx-auto flex items-center gap-1'>
-      <button
-        onClick={() => {
-          console.log('yes');
-          pageArray = pageArray.slice(1);
-          console.log({ pageArray });
-        }}
-        type='button'>
-        {' '}
+      <button onClick={() => {}} type='button'>
         Previous
       </button>
       <ul className='flex flex-row mx-auto flex-wrap gap-1 justify-between p-2 '>
-        {pageArray.map((number, count) => {
-          console.log(number);
+        {pageArray.map((number) => {
           return (
             <li key={number} className='border-2 p-1 rounded-md '>
               <div onClick={() => paginate(number)} className='text-gray-500'>
@@ -46,7 +37,9 @@ const Pagination = ({
           );
         })}
       </ul>
-      <button type='button'>Next</button>
+      <button type='button' onClick={() => {}}>
+        Next
+      </button>
     </nav>
   );
 };
