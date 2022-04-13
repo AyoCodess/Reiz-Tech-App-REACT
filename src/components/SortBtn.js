@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/solid';
 import Tooltip from './Tooltip';
+import NavBtn from './NavBtn';
 
 function SortBtn({
   isAscending,
@@ -33,35 +34,16 @@ function SortBtn({
           </button>
           {displayTip && <Tooltip text={'Only sorts by country name'} />}
         </div>
-        <div className='flex items-center'>
-          <button
-            onClick={sortByOceaniaRegion}
-            className='p-2 border-2 border-gray-100 bg-gray-600 rounded-md shadow'
-            type='button'>
-            {' '}
-            Oceania Region
-          </button>
-        </div>
+
+        <NavBtn onClick={sortByOceaniaRegion} text={' Oceania Region'} />
+
         {resultData.length >= 1 &&
           resultData !== undefined &&
           searchedValue !== '' && (
-            <div className='flex items-center'>
-              <button
-                onClick={filterHandler}
-                type='button'
-                className='p-2 border-2 border-gray-100 bg-gray-600  rounded-md shadow'>
-                filters
-              </button>
-            </div>
+            <NavBtn onClick={filterHandler} text={'Filters'} />
           )}
-        <div className='flex items-center '>
-          <button
-            onClick={resetDataHandler}
-            type='button'
-            className='p-2 border-2 border-gray-100 bg-gray-600  rounded-md shadow'>
-            Reset
-          </button>
-        </div>
+
+        <NavBtn onClick={resetDataHandler} text={'Reset'} />
       </div>
     </div>
   );

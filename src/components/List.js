@@ -28,7 +28,7 @@ function List({
           )}
           {resultData && (
             <div className='text-xs text-gray-400'>
-              Current Selected Country
+              Current Selected Country (Top Result)
             </div>
           )}
           <SearchResult
