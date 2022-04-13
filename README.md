@@ -22,9 +22,13 @@ Axios - Data fetching
 
 ## My experience and considerations
 
-I had a great time building this application, I had to spend some time thinking about the pagination implementation. I'm sure the pagination architecture could be improved with a little guidance from a more experienced dev.
+I had to spend some time thinking about the pagination implementation. I'm sure the pagination architecture could be improved with a little guidance from a more experienced dev.
 
 I opted to avoid context API and chose to pop drill as the app is still relatively small. Context is generally not that efficient at this point in time. If we wanted to add a host of new filter options I would opt to use redux in that case.
+
+I created my own tooltip to explain the ascending/descending function. If filter options were to expand and if many of them needed explanations in the form of tooltips, I would opt to use this small package https://github.com/atomiks/tippyjs-react
+
+Overall I had a great time building this application and hope it as satisfied the requirements of this task to a large degree.
 
 ## Live-link
 
