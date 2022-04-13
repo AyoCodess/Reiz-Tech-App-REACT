@@ -18,7 +18,7 @@ function App() {
   const [isFilterOptionsOpen, setIsFilterOptionsOpen] = useState(false);
 
   // - Pagination
-  const [countriesPerPage] = useState(10);
+  const [countriesPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastCountry = currentPage * countriesPerPage;
@@ -86,8 +86,6 @@ function App() {
     setCurrentPage(1);
     setData(defaultData);
 
-    console.log({ data });
-    console.log({ resultData });
     setData((prev) => {
       let response = prev.filter((country) => {
         if (resultData[0].area > country.area) {
@@ -125,8 +123,6 @@ function App() {
     dataReset ? setDataReset(false) : setDataReset(true);
   };
 
-  console.log({ resultData });
-
   return (
     <>
       <Navbar
@@ -146,15 +142,6 @@ function App() {
       />
 
       <AppContainer>
-        <Pagination
-          countriesPerPage={countriesPerPage}
-          totalCountries={data.length}
-          paginate={paginate}
-          currentPage={currentPage}
-          data={data}
-          isLoading={isLoading}
-        />
-
         <List
           data={countries}
           isLoading={isLoading}
@@ -162,6 +149,14 @@ function App() {
           setResultData={setResultData}
           results={results}
           searchedValue={searchedValue}
+        />
+        <Pagination
+          countriesPerPage={countriesPerPage}
+          totalCountries={data.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          data={data}
+          isLoading={isLoading}
         />
       </AppContainer>
     </>

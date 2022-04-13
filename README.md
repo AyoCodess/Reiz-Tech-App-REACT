@@ -27,8 +27,9 @@ Axios - Data fetching
 3. Filter by countries oceania region
 4. filter countries by area size
 5. Pagination
-6. Filters options only appear if country exists.
-7. Error handling
+6. Filters options only appear if country exists
+7. Optimized for the mobile experience
+8. Error handling
 
 # My experience and considerations
 

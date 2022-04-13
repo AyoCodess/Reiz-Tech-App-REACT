@@ -14,7 +14,7 @@ function Search({
   };
 
   return (
-    <div className='mt-10'>
+    <div className='mt-5'>
       <label htmlFor='search' className='block   text-white'>
         Search for a country for more options...
       </label>

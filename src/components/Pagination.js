@@ -35,7 +35,7 @@ const Pagination = ({
   return (
     <>
       {!isLoading && data.length > 10 && (
-        <nav className='max-w-[25rem]  flex flex-wrap items-center gap-1'>
+        <nav className='absolute bottom-[-8rem] left-3 max-w-[25rem]  flex flex-wrap items-center gap-1 mt-4 pb-3'>
           {/* // - hides next and prev buttons when there is less 5 page numbers to be displayed in the UI  */}
           {pageNumbers.length !== numberOfPageNumbersDisplayed && (
             <PaginationBtn
