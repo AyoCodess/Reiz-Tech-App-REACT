@@ -38,6 +38,7 @@ function Navbar({
           resultData={resultData}
           sortByOceaniaRegion={sortByOceaniaRegion}
           isFilterOptionsOpen={isFilterOptionsOpen}
+          searchedValue={searchedValue}
         />
         {isFilterOptionsOpen && (
           <FilterOptions

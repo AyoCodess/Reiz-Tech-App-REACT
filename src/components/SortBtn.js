@@ -9,7 +9,7 @@ function SortBtn({
   resetDataHandler,
   resultData,
   sortByOceaniaRegion,
-  isFilterOptionsOpen,
+  searchedValue,
 }) {
   const [displayTip, setDisplayTip] = useState(false);
   return (
@@ -42,16 +42,18 @@ function SortBtn({
             Oceania Region
           </button>
         </div>
-        {resultData.length >= 1 && resultData !== undefined && (
-          <div className='flex items-center'>
-            <button
-              onClick={filterHandler}
-              type='button'
-              className='p-2 border-2 border-gray-100 rounded-md shadow'>
-              filters
-            </button>
-          </div>
-        )}
+        {resultData.length >= 1 &&
+          resultData !== undefined &&
+          searchedValue !== '' && (
+            <div className='flex items-center'>
+              <button
+                onClick={filterHandler}
+                type='button'
+                className='p-2 border-2 border-gray-100 rounded-md shadow'>
+                filters
+              </button>
+            </div>
+          )}
         <div className='flex items-center '>
           <button
             onClick={resetDataHandler}
