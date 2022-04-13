@@ -20,6 +20,15 @@ React.js - front-end framework
 Tailwind CSS - CSS framework
 Axios - Data fetching
 
+## Features
+
+1. Can select any country from filtered results
+2. Filter countries alphabetically
+3. Filter by countries oceania region
+4. filter countries by area size
+5. Pagination
+6. Error handling
+
 ## My experience and considerations
 
 I had to spend some time thinking about the pagination implementation. I'm sure the pagination architecture could be improved with a little guidance from a more experienced dev.
