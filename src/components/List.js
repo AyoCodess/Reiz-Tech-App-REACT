@@ -21,9 +21,16 @@ function List({
     <div className='grid grid-cols-1 gap-4 mt-2  '>
       {results && (
         <>
-          <div className='text-xs text-gray-400'>
-            Select from Search Results{' '}
-          </div>
+          {!resultData && (
+            <div className='text-xs text-gray-400'>
+              Select from Search Results{' '}
+            </div>
+          )}
+          {resultData && (
+            <div className='text-xs text-gray-400'>
+              Current Selected Country
+            </div>
+          )}
           <SearchResult
             data={resultData}
             setResultData={setResultData}

@@ -7,7 +7,7 @@ function FilterOptions({ resultData, searchByAreaHandler }) {
       <div className='text-sm'>Filter Options:</div>
       <button
         onClick={searchByAreaHandler}
-        className='border-2 border-gray-400 bg-black rounded-md p-1 '
+        className='border-2 border-gray-400 bg-gray-600 rounded-md p-1 '
         type='button'>{`Countries smaller than ${resultData[0].name} by area`}</button>
     </div>
   );

@@ -47,7 +47,7 @@ const Pagination = ({
               }}
             />
           )}
-          <p className='py-1 px-2 bg-black text-white shadow rounded-md'>
+          <p className='py-1 px-2 bg-gray-600 text-white shadow rounded-md'>
             Page {currentPage}
           </p>
           <ul className='flex flex-row  mx-auto flex-wrap gap-1 justify-between p-2 '>

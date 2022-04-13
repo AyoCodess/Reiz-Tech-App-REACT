@@ -9,7 +9,7 @@ function Header() {
         <div>
           <img className='w-16' src={logo} alt='reiz-tech logo' />
         </div>
-        <div className=' p-2 border bg-white text-gray-500  text-center rounded-md'>
+        <div className=' p-2 border bg-gray-600 text-white  text-center rounded-md'>
           Find Your Country App
         </div>
       </div>
