@@ -12,7 +12,9 @@ npm start
 
 ## About
 
-Organizing and displaying countries based on filtered options.
+Task: Organizing and displaying countries based on filtered options.
+
+This was a 2 day challenge for a recruitment process. I completed this project in 1.5 days.
 
 ## Technologies
 
